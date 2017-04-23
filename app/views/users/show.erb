@@ -1,0 +1,9 @@
+<h1>Welcome <%=@user.name%> </h1>
+ <h1><%=@user.name%> profile</h1>
+
+ <form method = "post" action = "/sessions/:id">
+ <form method = "post" action = "/users/:id">
+  <input type = "hidden" name = "_method" value = "delete">
+  <input type = "submit" value = "log out">
+
+ </form>
