@@ -1,0 +1,11 @@
+<div class="container">
+  <h3>Here are our Wonderful Vegetabels: </h3>
+  <ol>
+    <% @vegetables.each do |vegetable| %>
+      <li>
+        Vegetable: <%=vegetable.name%> </br>
+      </li>
+    <%end%>
+  </ol>
+
+</div>
