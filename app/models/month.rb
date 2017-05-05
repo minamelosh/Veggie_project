@@ -1,5 +1,5 @@
 class Month < ActiveRecord::Base
   validates :name, presence: true
 
-  belongs_to :vegetables
+  has_many :vegetables, source: InSeason
 end

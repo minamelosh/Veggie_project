@@ -1,23 +1,22 @@
 #login form
-get '/sessions/new' do
-  erb :'sessions/new'
+get '/login/new' do
+  erb :'login/new'
 end
 
 #create new session
-post '/sessions' do
-  @user = User.where(name: params[:user][:name]).first
-  if @user && @user.authenticate?(params[:user][:password])
+post '/login' do
+  @user = User.find_by(first_name: params[:user][:first_name])
+  if @user && @user.authenticate?(params[:user][:hashed_password])
     session[:id] = @user.id
-    redirect "users/#{@user.id}"
+    redirect "/users/#{@user.id}"
   else
-   @errors = []
-   @errors << "incorrect username or password"
-   erb :'sessions/new'
+   @errors = ["incorrect username or password"]
+   erb :'/login/new'
   end
 end
 
 #logout
-delete '/sessions/:id' do
+get '/logout/:id' do
   session[:id] = nil
-  redirect 'sessions/new'
+  redirect '/'
 end
