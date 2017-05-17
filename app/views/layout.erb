@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/css/normalize.css?app=skills">
+  <link rel="stylesheet" href="/css/application.css?app=skills">
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="/js/application.js?app=skills"></script>
+
+  <title></title>
+</head>
+<body>
+<div class="container"><br />
+
+  <a href="/ "><button>Home</button></a><br /><br />
+
+  <% if session[:id] %>
+  <% @current_user = User.find(session[:id])%>
+  <form action="/logout/:id" method="get">
+  <input name="commit" type="submit" value="Logout" />
+  </form>
+
+  <form action="/users/<%=@current_user.id%>" method="get">
+    <input name="commit" type="submit" value="User Profile" />
+  </form>
+
+
+  <% end %>
+
+</div>
+  <%= yield %>
+
+</body>
+
+</html>

@@ -2,7 +2,6 @@ class User < ActiveRecord::Base
   validates :name, presence: true
   validates :email, uniqueness: true
   validates :password_hash, presence: true
-  validates :location, presence: true
 
   #double check many-to-many through? syntax??
   has_many :vegetables, source: UserVeggies
